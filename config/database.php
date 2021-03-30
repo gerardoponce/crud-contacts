@@ -2,12 +2,6 @@
 
 use Illuminate\Support\Str;
 
-// For AWS DB
-$RDS_HOSTNAME = $_SERVER['RDS_HOSTNAME'];
-$RDS_USERNAME = $_SERVER['RDS_USERNAME'];
-$RDS_PASSWORD = $_SERVER['RDS_PASSWORD'];
-$RDS_DB_NAME = $_SERVER['RDS_DB_NAME'];
-
 return [
 
     /*
@@ -52,11 +46,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => $RDS_HOSTNAME,
+            'host' => env('DB_HOST', 'aabczzah7pklpe.cvogt1dwkvnd.us-east-1.rds.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => $RDS_DB_NAME,
-            'username' => $RDS_USERNAME,
-            'password' => $RDS_PASSWORD,
+            'database' => env('DB_DATABASE', 'ebdb'),
+            'username' => 'dev',
+            'password' => '#123Dev456#',
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
