@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'CRUD Contacts'),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,7 +119,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', 'base64:VaxeygFxxiRb2/fHl4Zjl3mCoGbON0qx0rRFsK7L3GM='),
 
     'cipher' => 'AES-256-CBC',
 
