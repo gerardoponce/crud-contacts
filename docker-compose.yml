@@ -1,4 +1,4 @@
-version: '3'
+version: '2.0'
 services:
 
   #PHP Service
@@ -6,17 +6,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: digitalocean.com/php
+    image: cloudsigma.com/php
     container_name: app
     restart: unless-stopped
     tty: true
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
-    working_dir: /var/www
+    working_dir: /var/www/html/
     volumes:
-      - ./:/var/www
-      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./:/var/www/html/
+      - ./php/laravel.ini:/usr/local/etc/php/conf.d/laravel.ini
     networks:
       - app-network
 
@@ -30,7 +30,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./:/var/www
+      - ./:/var/www/html/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - app-network
@@ -45,7 +45,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: crud_contacts
-      MYSQL_ROOT_PASSWORD: $123Sys456$
+      MYSQL_ROOT_PASSWORD: 123Sys456
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
